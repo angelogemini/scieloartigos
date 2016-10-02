@@ -17,10 +17,7 @@ i=0
 		 pdf=$(wget -q -O- "$scielourlpdf" | grep -E 'http.*?\.pdf' -oh | sed -e 's/URL=//g')
 		 echo "olha a url do pdf: $pdf"
 		 wget -O "$pid.pdf" "$pdf"
-                 wget -O "$pid.xml" $(echo 'http://www.scielo.br/scieloOrg/php/articleXML.php?pid=')$pid$(echo '&lang=pt');xsltproc --output dublin_core.xml ../scielotodublincoreArca.xsl $pid.xml
-		 #;xsltproc --output agfomento.html ../agfomento.xsl $pid.xml;html2text -o agfomento.txt -utf8 agfomento.html; grep -Pizo '(acknowledg\S+|agradec\S+)\n(.*\n)+.*?\n(literature\scited|referências|referencias|resumo|abstract)\s*\n' agfomento.txt | grep -Pvi '(AGRADECIMENTOS|ACKNOWL\S+)\s*$' | grep -Pvi '(LITERATURE\s+CITED|REFERENCIAS|REFERÊNCIAS|RESUMO|ABSTRACT)\s*$' | grep -Pv '^\s*$' > agftmp.txt ; sed -i '/<dcvalue element="description" qualifier="sponsorship" language="pt_BR">/ragftmp.txt' dublin_core.xml ; sed -i 's/TEXTOASERRETIRADO//' dublin_core.xml;rm *.html; rm *.txt; ls -1 | egrep -v '.xml$'  | grep -v 'contents' > contents
-	#fi
-	#let i++
+                 wget -O "$pid.xml" $(echo 'http://www.scielo.br/scieloOrg/php/articleXML.php?pid=')$pid$(echo '&lang=pt');xsltproc --output dublin_core.xml ../scielotodublincore.xsl $pid.xml
 	cd "$aki"
  done
  
